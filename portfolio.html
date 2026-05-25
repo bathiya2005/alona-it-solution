@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Alona Digital Solution | Building Modern Digital Experiences</title>
+     <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+   <!-- PAGE LOADER -->
+<div id="pageLoader" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#070d19; display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:99999; transition:opacity 0.6s ease, visibility 0.6s ease;">
+  
+  <!-- Logo -->
+  <div style="position:relative; display:flex; flex-direction:column; align-items:center; gap:1.5rem;">
+    
+    <!-- Spinning ring around logo -->
+    <div style="position:relative; width:120px; height:120px; display:flex; justify-content:center; align-items:center;">
+      
+      <!-- Outer spin ring -->
+      <div style="position:absolute; top:0; left:0; width:120px; height:120px; border-radius:50%; border:2px solid transparent; border-top:2px solid #00f0ff; border-right:2px solid #7000ff; animation:loaderSpin 1.2s linear infinite;"></div>
+      
+      <!-- Inner spin ring -->
+      <div style="position:absolute; top:10px; left:10px; width:100px; height:100px; border-radius:50%; border:1px solid transparent; border-bottom:1px solid #00f0ff; border-left:1px solid #ff00cc; animation:loaderSpinReverse 0.9s linear infinite;"></div>
+      
+      <!-- Logo image -->
+      <img 
+        src="public/logo.png" 
+        alt="Alona" 
+        style="width:70px; height:70px; object-fit:contain; position:relative; z-index:2; animation:loaderPulse 1.5s ease-in-out infinite;"
+      >
+    </div>
+
+    <!-- Brand name -->
+    <div style="display:flex; align-items:center; gap:0.4rem;">
+      <span style="font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:700; color:#ffffff; letter-spacing:-0.03em;">Alona</span>
+      <span style="font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:700; color:#00f0ff;">.</span>
+    </div>
+
+    <!-- Loading bar -->
+    <div style="width:180px; height:2px; background:rgba(255,255,255,0.08); border-radius:99px; overflow:hidden;">
+      <div id="loaderBar" style="height:100%; width:0%; background:linear-gradient(90deg, #7000ff, #00f0ff); border-radius:99px; transition:width 0.1s ease;"></div>
+    </div>
+
+    <!-- Loading text -->
+    <span id="loaderText" style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#94a3b8; letter-spacing:0.15em; text-transform:uppercase;">Initializing...</span>
+  </div>
+</div>
+
+<style>
+@keyframes loaderSpin { to { transform:rotate(360deg); } }
+@keyframes loaderSpinReverse { to { transform:rotate(-360deg); } }
+@keyframes loaderPulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.08);opacity:0.85;} }
+</style>
+
+<script>
+(function(){
+  var texts = ['Initializing...', 'Loading Assets...', 'Building UI...', 'Almost Ready...'];
+  var bar = document.getElementById('loaderBar');
+  var txt = document.getElementById('loaderText');
+  var loader = document.getElementById('pageLoader');
+  var progress = 0;
+  var step = 0;
+
+  var interval = setInterval(function(){
+    progress += Math.random() * 18 + 8;
+    if(progress > 100) progress = 100;
+    bar.style.width = progress + '%';
+    txt.textContent = texts[Math.min(step, texts.length - 1)];
+    step++;
+    if(progress >= 100){
+      clearInterval(interval);
+      setTimeout(function(){
+        loader.style.opacity = '0';
+        loader.style.visibility = 'hidden';
+      }, 300);
+    }
+  }, 180);
+})();
+</script>
+
+
+  <!-- FIXED STICKY NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+<a href="index.html" class="logo" style="display:flex; align-items:center; text-decoration:none; gap:0.5rem;">
+  <img 
+    src="public/logo.png" 
+    alt="Alona Logo" 
+    style="height:42px; width:auto; max-width:160px; object-fit:contain; display:block; transition:opacity 0.2s ease;"
+    onmouseover="this.style.opacity='0.85'"
+    onmouseout="this.style.opacity='1'"
+  >
+  <span style="font-family:'Space Grotesk',sans-serif; font-size:1.5rem; font-weight:700; color:#ffffff; letter-spacing:-0.03em;">
+    Alona<span style="color:var(--color-primary);">.</span>
+  </span>
+</a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+        <li><a href="team.html" class="nav-link">Team</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get Started</a></li>
+      </ul>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="hamburger" aria-label="Toggle Navigation">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- INNER PAGE HEADER -->
+<header style="padding-top:180px; padding-bottom:80px; background:linear-gradient(to bottom, #040811, #070d19); border-bottom:1px solid rgba(255,255,255,0.08); position:relative; overflow:hidden; min-height:420px;">
+
+  <!-- Background Image -->
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;">
+    <img 
+      src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1600&auto=format&fit=crop" 
+      alt="Portfolio Header" 
+      style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;"
+    >
+    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(to bottom, rgba(4,8,17,0.75) 0%, rgba(7,13,25,0.92) 100%);"></div>
+  </div>
+
+  <!-- Glow -->
+  <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:800px; height:400px; background:radial-gradient(circle, rgba(112,0,255,0.08) 0%, transparent 60%); filter:blur(60px); pointer-events:none; z-index:1;"></div>
+
+  <!-- Content -->
+  <div class="container" style="position:relative; z-index:2;">
+    <h1 style="font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.2; margin-bottom:1rem; background:linear-gradient(135deg,#ffffff 30%,#00f0ff 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
+      System Showcase
+    </h1>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:0.85rem; color:#94a3b8; display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+      <a href="index.html" style="color:#00f0ff; text-decoration:none; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Home</a>
+      <span style="color:#94a3b8;">/</span>
+      <span>Portfolio</span>
+    </div>
+  </div>
+
+</header>
+
+  <!-- PORTFOLIO GRID SECTION -->
+  <section class="portfolio" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-head reveal" style="text-align: center; margin-bottom: 3rem;">
+        <span class="section-meta" style="justify-content: center; display: inline-flex;">Our Deliverables</span>
+        <h2 class="section-title text-gradient">Architectures Operating Globally</h2>
+        <p class="section-desc" style="margin: 0 auto 4rem;">Select standard categories below to filter our high-performance systems. Every portal loads instantly.</p>
+      </div>
+
+      <!-- JavaScript Filters -->
+      <div class="portfolio-filter-buttons reveal" style="justify-content: center;">
+        <button class="filter-btn active" data-filter="all">All Portfolios</button>
+        <button class="filter-btn" data-filter="corporate">Corporate</button>
+        <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+        <button class="filter-btn" data-filter="travel">Travel</button>
+        <button class="filter-btn" data-filter="portfolio">Personal Portfolios</button>
+        <button class="filter-btn" data-filter="restaurant">Restaurant</button>
+      </div>
+
+      <div class="portfolio-grid">
+        <!-- 1: Financial Enterprise Portal -->
+        <div class="portfolio-item reveal reveal-delay-1" data-category="corporate">
+          <div class="portfolio-img-box">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Colombo Financial Portal" referrerPolicy="no-referrer">
+            <div class="portfolio-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <h4 style="color:#ffffff; font-family:var(--font-display); font-size:1.2rem;">plantaion company system</h4>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-category">Corporate</span>
+            <h3 class="portfolio-title">plantaion company system</h3>
+            <p class="portfolio-desc">A system to control all the activities of the company. <br> <br> Private Client System</p>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="portfolio-item reveal reveal-delay-2" data-category="ecommerce">
+          <div class="portfolio-img-box">
+            <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=800&auto=format&fit=crop" alt="Ape Boutique E-commerce" referrerPolicy="no-referrer">
+            <div class="portfolio-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <h4 style="color:#ffffff; font-family:var(--font-display); font-size:1.2rem;">Clothing Factory Web System</h4>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-category">E-Commerce</span>
+            <h3 class="portfolio-title">Clothing Factory Web System</h3>
+            <p class="portfolio-desc">A system to manage Clothing Factory activities. <br> <br> Private Client System</p>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="portfolio-item reveal reveal-delay-3" data-category="travel">
+          <div class="portfolio-img-box">
+            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=800&auto=format&fit=crop" alt="Ceylon Travel Hub" referrerPolicy="no-referrer">
+            <div class="portfolio-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <h4 style="color:#ffffff; font-family:var(--font-display); font-size:1.2rem;"> <a href="https://happytourssrilanka.com/">Happy Tours</a> </h4>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-category">Travel</span>
+            <h3 class="portfolio-title">Happy Tours Company</h3>
+            <p class="portfolio-desc">Interactive geo-mapping, tour planners, and fluid accommodation reservation portal.</p>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="portfolio-item reveal reveal-delay-1" data-category="portfolio">
+          <div class="portfolio-img-box">
+            <img src="https://png.pngtree.com/thumb_back/fh260/background/20240610/pngtree-computer-of-a-programmer-with-lines-code-of-software-image_15746003.jpg" alt="Creative Architect Portfolio" referrerPolicy="no-referrer">
+            <div class="portfolio-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <h4 style="color:#ffffff; font-family:var(--font-display); font-size:1.2rem;"> <a href="https://www.alona.lk/" target="_blank">Alona Company Portfolio</a> </h4>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-category">Portfolio</span>
+            <h3 class="portfolio-title">Alona Company Portfolio</h3>
+            <p class="portfolio-desc">Our company website.</p>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL PREVIEW REFERENCE slider -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-head reveal" style="text-align: center; margin-bottom: 5rem;">
+        <span class="section-meta" style="justify-content: center; display: inline-flex;">Client Integration Trust</span>
+        <h2 class="section-title text-gradient">Validated Operational Metrics</h2>
+        <p class="section-desc" style="margin: 0 auto;">Read feedback from product managers employing Alona layouts across Sri Lanka.</p>
+      </div>
+
+      <!-- Testimonial Slider Container -->
+      <div class="testimonials-slider-container reveal">
+        <button class="slider-control-btn ctrl-prev" aria-label="Previous Slide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <button class="slider-control-btn ctrl-next" aria-label="Next Slide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+
+        <div class="testimonials-track-wrapper">
+          <div class="testimonials-track">
+                       <div class="testimonial-slide">
+              <p class="testimonial-quote">“Alona Digital Solution developed a professional plantation management system for our company. Excellent service and great support.”</p>
+              <div class="testimonial-client">
+                <img src="https://media.istockphoto.com/id/1142192548/vector/man-avatar-profile-male-face-silhouette-or-icon-isolated-on-white-background-vector.jpg?s=612x612&w=0&k=20&c=DUKuRxK9OINHXt3_4m-GxraeoDDlhNuCbA9hp6FotFE=" class="client-avatar" referrerPolicy="no-referrer">
+                <div>
+                  <h4 class="client-name">Isuru Plantation</h4>
+                  <p class="client-role">Operations Manager</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-slide">
+              <p class="testimonial-quote">"The design is really good, bro. I’m happy with your reaction. I was actually looking for someone like you. Let’s go ahead with the work. I’m planning to work with you."</p>
+              <div class="testimonial-client">
+                <img src="https://media.istockphoto.com/id/1142192548/vector/man-avatar-profile-male-face-silhouette-or-icon-isolated-on-white-background-vector.jpg?s=612x612&w=0&k=20&c=DUKuRxK9OINHXt3_4m-GxraeoDDlhNuCbA9hp6FotFE=" alt="Jehan Gunasekara" class="client-avatar" referrerPolicy="no-referrer">
+                <div>
+                  <h4 class="client-name">Clothing Company</h4>
+                  <p class="client-role">Operations Manager</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA ACTION GRID -->
+  <section class="contact" style="padding: 6rem 0; text-align:center;">
+    <div class="container">
+      <div class="reveal" style="max-width: 700px; margin: 0 auto;">
+        <h2 class="section-title text-gradient">Ready For System Realignment?</h2>
+        <p class="section-desc" style="margin: 0 auto 3rem;">We help brands grow via fast, optimized, elegant, responsive digital solutions.</p>
+        <a href="contact.html" class="btn btn-primary">Start Your Custom Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMIUM FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-column">
+          <a href="index.html" class="logo">
+            <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span>Alona<span style="color:var(--color-primary);">.</span></span>
+          </a>
+          <p class="footer-desc">Building resilient corporate digital architectures with zero-bloat vanilla files. Engineered to deliver exceptional user journeys and high search rankings.</p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Enterprise Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About Alona</a></li>
+            <li><a href="services.html" class="footer-link">Digital Services</a></li>
+            <li><a href="portfolio.html" class="footer-link">Active Portfolios</a></li>
+            <li><a href="team.html" class="footer-link">Team architects</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Core Specialities</h4>
+          <ul class="footer-links">
+            <li><a href="services.html" class="footer-link">Custom Web Systems</a></li>
+            <li><a href="services.html" class="footer-link">Security Audits</a></li>
+            <li><a href="services.html" class="footer-link">UI/UX Journey Mapping</a></li>
+            <li><a href="services.html" class="footer-link">SEO Optimization</a></li>
+            <li><a href="services.html" class="footer-link">Node Integrations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Corporate Newsletter</h4>
+          <p class="footer-desc" style="margin-top:0.5rem;">Join 100+ global CIOs receiving our monthly modern architecture briefings.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed to Alona Architect Briefings!');">
+            <input type="email" class="newsletter-input" placeholder="cio@enterprise.com" required>
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Alona Digital Solution. All Rights Reserved. Designed for international enterprise standards.</p>
+        <div class="social-circle-row">
+          <a href="#" class="social-circle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="#" class="social-circle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+          <a href="#" class="social-circle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+
+  <script src="/assets/js/script.js" type="module"></script>
+</body>
+</html>
